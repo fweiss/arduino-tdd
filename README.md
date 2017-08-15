@@ -36,6 +36,13 @@ Important: You also need the CDT plugin, even if you have install the CDT bundle
 4. Develop a simple Aruino project with TDD
 1. Deploy the simple project to the device
 
+### Building ardiuno-mock
+
+It's OK to create a build sub directory and do the cmake/nake build there.
+
+There is a problem at step 10. It expects that the gtest directory already exists.
+Google Tests Runner in run configuration.
+
 ## Target platforms
 The following IoT platforms were used to validate this project:
 - Sparkfun ESP8266 Thing Dev
