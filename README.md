@@ -33,8 +33,19 @@ The following IoT platforms were used to validate this project:
 - Sparkfun ESP8266 Thing Dev
 
 ## Platform support
-Sloeber come equipped with several platforms. To include Sparfun. use this URL http://arduino.esp8266.com/stable/package_esp8266com_index.json
+Sloeber come equipped with several platforms.
 
-To add a platform:
-- Preferences > Arduino > third party index url's
+To add a platform/board:
+- Preferences > Arduino > Third party index url's
 - Add the url
+- Preferences > Arduino > Platforms and Boards
+- Navigate down to a specific board and version
+- Select the platform/board
+
+Wait for the download to complete. Download status is shown in the lower right corner of the Eclipse window.
+
+### Sparkfun ESP8266 Thing Dev
+
+The URL is URL http://arduino.esp8266.com/stable/package_esp8266com_index.json
+
+Select the eSP8266/esp8266/2.3.0 platform.
