@@ -28,6 +28,14 @@ Note: there are two Sloever plugin. The one with the most downloads was chosen.
 
 Important: You also need the CDT plugin, even if you have install the CDT bundled version of Eclipse.
 
+### Setup Milestones
+
+1. Eclipse up and running
+2. Deploy a simple sketch to the device with Sloeber
+3. Running a simple gtest
+4. Develop a simple Aruino project with TDD
+1. Deploy the simple project to the device
+
 ## Target platforms
 The following IoT platforms were used to validate this project:
 - Sparkfun ESP8266 Thing Dev
