@@ -6,6 +6,7 @@ After looking into many options, this toolchain was chosen:
 - The Arduino plugin called Sloeber
 - Google Test
 - Arduino Mock
+
 The following operating systems were used to validate this project:
 - Windows 7
 - Mac OS
