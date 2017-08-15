@@ -1,7 +1,10 @@
 #include "Arduino.h"
+#include "BlinkSignal.h"
 
 #define PIN 5
 #define DELAY 500
+
+BlinkSignal blinkSignal;
 
 void setup() {
 	pinMode(PIN, OUTPUT);
@@ -9,8 +12,5 @@ void setup() {
 
 // The loop function is called in an endless loop
 void loop() {
-	digitalWrite(PIN, HIGH);
-	delay(DELAY);
-	digitalWrite(PIN, LOW);
-	delay(DELAY);
+	blinkSignal.update(millis());
 }

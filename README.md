@@ -31,9 +31,9 @@ Important: You also need the CDT plugin, even if you have install the CDT bundle
 ### Setup Milestones
 
 1. Eclipse up and running
-2. Deploy a simple sketch to the device with Sloeber
-3. Running a simple gtest
-4. Develop a simple Aruino project with TDD
+1. Deploy a simple sketch to the device with Sloeber
+1. Running a simple gtest
+1. Develop a simple Aruino project with TDD
 1. Deploy the simple project to the device
 
 ### Building ardiuno-mock
@@ -42,6 +42,15 @@ It's OK to create a build sub directory and do the cmake/nake build there.
 
 There is a problem at step 10. It expects that the gtest directory already exists.
 Google Tests Runner in run configuration.
+
+Tip: Instead of #define UNIT_TESTING in each test file, you can add it the the run configuration.
+GCC C++ Compiler > Preprocessor
+
+### Setiing up run configurations
+
+Follow the linked instructions for setting up the gtest environment.
+
+For the Release environment, add the include directory, but that directory ought to be split between test and release.
 
 ## Target platforms
 The following IoT platforms were used to validate this project:
