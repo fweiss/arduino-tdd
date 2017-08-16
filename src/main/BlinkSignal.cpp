@@ -7,5 +7,6 @@
 #endif
 
 void BlinkSignal::update(unsigned long millis) {
-	digitalWrite(1, 1);
+	uint8_t value = millis == 0 ? HIGH : LOW;
+	digitalWrite(1, value);
 }
