@@ -39,13 +39,15 @@ Important: You also need the CDT plugin, even if you have installed the CDT bund
 ### Building ardiuno-mock
 It's OK to create a build sub directory and do the cmake/nake build there.
 
+At step 7 add the include directory "include/arduino-mock", in addition to the directory "include".
+This eliminates the need for the UNIT_TESTING define in the tests and its usage in the non-test code.
+The non-test case includes "Arduino.h" as usual, but in the gtest configuration it is searched for in
+the directory include/arduino-mock instead of the directory "core".
+
 At step 8 it says to switch configurations with the hammer toolbar button.
 That didn't work. However, using the launcher Run button for tests and the Arduino Upload Sketch button sufficed.
 
 Be sure to run the gtest build at the end of step 9 before starting on Step 10.
-
-Tip: Instead of #define UNIT_TESTING in each test file, you can add it the the gtest run configuration.
-Navigate to GCC C++ Compiler > Preprocessor.
 
 In gtest configuration, set language version to C++11. This permits using more modern C++.
 

@@ -4,7 +4,7 @@
 #define PIN 5
 #define DELAY 500
 
-BlinkSignal blinkSignal(PIN, 200);
+BlinkSignal blinkSignal(PIN, DELAY);
 
 void setup() {
 }

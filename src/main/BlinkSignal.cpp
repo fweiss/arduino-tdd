@@ -1,10 +1,10 @@
 #include "BlinkSignal.h"
 
-#ifndef UNIT_TESTING
+//#ifndef UNIT_TESTING
 #include "Arduino.h"
-#else
-#include "arduino-mock/Arduino.h"
-#endif
+//#else
+//#include "arduino-mock/Arduino.h"
+//#endif
 
 BlinkSignal::BlinkSignal(char pin, unsigned long pulseWidth) {
 	this->pin = pin;
