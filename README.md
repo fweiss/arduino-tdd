@@ -14,19 +14,11 @@ The following operating systems were used to validate this project:
 - Windows 7
 - Mac OS
 
-The following guide is indispensible - do follow as it is complete and detailed: http://mitchtronic.blogspot.com/2017/03/setting-up-google-test-google-mock.html
+The following guide is indispensible - do follow it, as it is complete and detailed: http://mitchtronic.blogspot.com/2017/03/setting-up-google-test-google-mock.html
 
 ## Setup the toolchain
 
 Setting up the toolchain is a bit elaborate, especially since there'a no plugin yet for Google Test.
-
-### Eclipse
-Installation of Eclipse and the requisite JDK are straight forward.
-The Sloeber plugin can be found in the Eclipse Marketplace.
-
-Note: there are two Sloever plugin. The one with the most downloads was chosen.
-
-Important: You also need the CDT plugin, even if you have install the CDT bundled version of Eclipse.
 
 ### Setup Milestones
 
@@ -36,42 +28,48 @@ Important: You also need the CDT plugin, even if you have install the CDT bundle
 1. Develop a simple Aruino project with TDD
 1. Deploy the simple project to the device
 
-### Building ardiuno-mock
+### Eclipse
+Installation of Eclipse and the requisite JDK is straight-forward.
+The Sloeber plugin can be found in the Eclipse Marketplace.
 
+Note: there are two Sloeber plugin. The one with the most downloads was chosen.
+
+Important: You also need the CDT plugin, even if you have installed the CDT bundled version of Eclipse.
+
+### Building ardiuno-mock
 It's OK to create a build sub directory and do the cmake/nake build there.
 
-There is a problem at step 10. It expects that the gtest directory already exists.
-Google Tests Runner in run configuration.
+At step 8 it says to switch configurations with the hammer toolbar button.
+That didn't work. However, using the launcher Run button for tests and the Arduino Upload Sketch button sufficed.
 
-Tip: Instead of #define UNIT_TESTING in each test file, you can add it the the run configuration.
-GCC C++ Compiler > Preprocessor
+Be sure to run the gtest build at the end of step 9 before starting on Step 10.
 
-### Setiing up run configurations
-
-Follow the linked instructions for setting up the gtest environment.
-
-For the Release environment, add the include directory, but that directory ought to be split between test and release.
+Tip: Instead of #define UNIT_TESTING in each test file, you can add it the the gtest run configuration.
+Navigate to GCC C++ Compiler > Preprocessor.
 
 In gtest configuration, set language version to C++11. This permits using more modern C++.
 
+### Setting up run configurations
+For the Release environment, add the include directory, but that directory ought to be split between test and release.
+
 ## Target platforms
 The following IoT platforms were used to validate this project:
-- Sparkfun ESP8266 Thing Dev
+- Sparkfun ESP8266 Thing Dev (a spare device I had which also had built-in FTDI)
 
 ## Platform support
-Sloeber come equipped with several platforms.
+Sloeber comes equipped with several platforms.
 
-To add a platform/board:
+To add an addtional platform/board:
 - Preferences > Arduino > Third party index url's
 - Add the url
 - Preferences > Arduino > Platforms and Boards
 - Navigate down to a specific board and version
-- Select the platform/board
+- Select the platform/board(s)
 
 Wait for the download to complete. Download status is shown in the lower right corner of the Eclipse window.
 
 ### Sparkfun ESP8266 Thing Dev
 
-The URL is URL http://arduino.esp8266.com/stable/package_esp8266com_index.json
+The URL is http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
 Select the eSP8266/esp8266/2.3.0 platform.
