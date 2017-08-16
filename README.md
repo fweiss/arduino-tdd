@@ -52,6 +52,8 @@ Follow the linked instructions for setting up the gtest environment.
 
 For the Release environment, add the include directory, but that directory ought to be split between test and release.
 
+In gtest configuration, set language version to C++11. This permits using more modern C++.
+
 ## Target platforms
 The following IoT platforms were used to validate this project:
 - Sparkfun ESP8266 Thing Dev

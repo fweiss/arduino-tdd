@@ -6,7 +6,16 @@
 #include "arduino-mock/Arduino.h"
 #endif
 
+BlinkSignal::BlinkSignal(char pin, unsigned long pulseWidth) {
+	this->pin = pin;
+	this->pulseWidth = pulseWidth;
+	pinMode(pin, OUTPUT);
+}
+
 void BlinkSignal::update(unsigned long millis) {
-	uint8_t value = millis == 0 ? HIGH : LOW;
-	digitalWrite(1, value);
+	if (millis >= nextMillis) {
+		nextMillis = millis + pulseWidth;
+		currentState = currentState == HIGH ? LOW : HIGH;
+		digitalWrite(pin, currentState);
+	}
 }
