@@ -9,7 +9,7 @@ private:
 public:
 	BlinkSignal(char pin, unsigned long pulsWidth);
 	void update(unsigned long millis);
-	void setPulseWidth(unsigned long pulseWidth) {
+	void setLowPulseWidth(unsigned long pulseWidth) {
 		this->pulseWidth = pulseWidth;
 	}
 };
