@@ -73,3 +73,28 @@ TEST(Square, Frequency) {
 	blinkSignal.update(1006);
 	releaseArduinoMock();
 }
+
+TEST(PulseTrain, Two) {
+	ArduinoMock* arduinoMock = arduinoMockInstance();
+	{
+		InSequence s1;
+		EXPECT_CALL(*arduinoMock, digitalWrite(1, HIGH));
+		EXPECT_CALL(*arduinoMock, digitalWrite(1, LOW));
+		EXPECT_CALL(*arduinoMock, digitalWrite(1, HIGH));
+		EXPECT_CALL(*arduinoMock, digitalWrite(1, LOW));
+		EXPECT_CALL(*arduinoMock, digitalWrite(1, HIGH));
+		EXPECT_CALL(*arduinoMock, digitalWrite(1, LOW));
+	}
+	BlinkSignal blinkSignal(1, 60);
+	blinkSignal.setLowPulseWidth(60);
+	blinkSignal.setHighPulseCount(2);
+
+	blinkSignal.update(0);
+	blinkSignal.update(20);
+	blinkSignal.update(40);
+	blinkSignal.update(60);
+	blinkSignal.update(120);
+	blinkSignal.update(140);
+
+	releaseArduinoMock();
+}

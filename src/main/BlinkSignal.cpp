@@ -4,13 +4,20 @@
 
 BlinkSignal::BlinkSignal(char pin, unsigned long pulseWidth) {
 	this->pin = pin;
-	this->pulseWidth = pulseWidth;
+	this->lowPulseWidth = pulseWidth;
+	this->highPulseWidth = pulseWidth;
 	pinMode(pin, OUTPUT);
 }
 
 void BlinkSignal::update(unsigned long millis) {
 	if (millis >= nextMillis) {
-		nextMillis = millis + pulseWidth;
+		if (countDown > 0) {
+			countDown--;
+			nextMillis = millis + highPulseWidth;
+		} else {
+			countDown = highPulseCount;
+			nextMillis = millis + lowPulseWidth;
+		}
 		currentState = currentState == HIGH ? LOW : HIGH;
 		digitalWrite(pin, currentState);
 	}

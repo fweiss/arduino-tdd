@@ -75,3 +75,10 @@ Wait for the download to complete. Download status is shown in the lower right c
 The URL is http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
 Select the eSP8266/esp8266/2.3.0 platform.
+
+## Debugging
+
+https://www.ics.uci.edu/~pattis/common/handouts/macmingweclipse/allexperimental/mac-gdb-install.html
+
+Eclipse Oxygen has experimental integration with lldb.
+

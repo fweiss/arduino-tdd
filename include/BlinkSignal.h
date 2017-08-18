@@ -3,13 +3,22 @@
 class BlinkSignal {
 private:
 	unsigned char pin = 1;
-	unsigned long pulseWidth = 1;
+	unsigned long lowPulseWidth = 1;
+	char highPulseCount = 1;
 	unsigned char currentState = 0;
 	unsigned long nextMillis = 0;
+
+	char countDown = 1;
+	unsigned long highPulseWidth;
 public:
 	BlinkSignal(char pin, unsigned long pulsWidth);
 	void update(unsigned long millis);
 	void setLowPulseWidth(unsigned long pulseWidth) {
-		this->pulseWidth = pulseWidth;
+		this->lowPulseWidth = pulseWidth;
+	}
+	void setHighPulseCount(char count) {
+		this->highPulseCount = count * 2 - 1;
+		this->highPulseWidth = 20;
+		this->countDown = this->highPulseCount;
 	}
 };
