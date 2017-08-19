@@ -1,8 +1,6 @@
 #include "BlinkSignal.h"
 
-#include "Arduino.h"
-
-BlinkSignal::BlinkSignal(char pin, unsigned long pulseWidth) {
+BlinkSignal::BlinkSignal(uint8_t pin, unsigned long pulseWidth) {
 	this->pin = pin;
 	this->lowPulseWidth = pulseWidth;
 	this->highPulseWidth = pulseWidth;
@@ -17,7 +15,7 @@ void BlinkSignal::setOffPulseWidth(unsigned long pulseWidth) {
 	this->lowPulseWidth = pulseWidth;
 }
 
-void BlinkSignal::setOnPulseCount(char count) {
+void BlinkSignal::setOnPulseCount(uint8_t count) {
 	this->highPulseCount = count * 2 - 1;
 	this->highPulseWidth = lowPulseWidth / highPulseCount ;
 	this->countDown = this->highPulseCount;

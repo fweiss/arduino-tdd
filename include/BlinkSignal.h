@@ -1,11 +1,13 @@
 #pragma once
 
+#include "Arduino.h"
+
 class BlinkSignal {
 private:
-	unsigned char pin = 1;
+	uint8_t pin = 1;
 	bool invert = false;
 	unsigned long lowPulseWidth = 1;
-	char highPulseCount = 1;
+	unsigned long highPulseCount = 1;
 	unsigned char currentState = 0;
 	unsigned long nextMillis = 0;
 
@@ -13,9 +15,9 @@ private:
 	unsigned long highPulseWidth;
 	void illuminate();
 public:
-	BlinkSignal(char pin, unsigned long offPulseWidth);
+	BlinkSignal(uint8_t pin, unsigned long offPulseWidth);
 	void update(unsigned long millis);
 	void invertOutput(bool invert);
 	void setOffPulseWidth(unsigned long pulseWidth);
-	void setOnPulseCount(char count);
+	void setOnPulseCount(uint8_t count);
 };
