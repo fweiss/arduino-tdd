@@ -13,6 +13,17 @@ void BlinkSignal::invertOutput(bool invert) {
 	this->invert = invert;
 }
 
+void BlinkSignal::setOffPulseWidth(unsigned long pulseWidth) {
+	this->lowPulseWidth = pulseWidth;
+}
+
+void BlinkSignal::setOnPulseCount(char count) {
+	this->highPulseCount = count * 2 - 1;
+	this->highPulseWidth = lowPulseWidth / highPulseCount ;
+	this->countDown = this->highPulseCount;
+}
+
+
 void BlinkSignal::update(unsigned long millis) {
 	if (millis >= nextMillis) {
 		if (countDown > 0) {

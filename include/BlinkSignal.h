@@ -16,12 +16,6 @@ public:
 	BlinkSignal(char pin, unsigned long offPulseWidth);
 	void update(unsigned long millis);
 	void invertOutput(bool invert);
-	void setOffPulseWidth(unsigned long pulseWidth) {
-		this->lowPulseWidth = pulseWidth;
-	}
-	void setOnPulseCount(char count) {
-		this->highPulseCount = count * 2 - 1;
-		this->highPulseWidth = lowPulseWidth / highPulseCount ;
-		this->countDown = this->highPulseCount;
-	}
+	void setOffPulseWidth(unsigned long pulseWidth);
+	void setOnPulseCount(char count);
 };
