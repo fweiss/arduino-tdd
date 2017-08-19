@@ -21,6 +21,7 @@ void BlinkSignal::setOnPulseCount(uint8_t count) {
     this->countDown = this->highPulseCount;
 }
 
+
 void BlinkSignal::update(unsigned long millis) {
     if (millis >= nextMillis) {
     	    if (countDown > 0) {
