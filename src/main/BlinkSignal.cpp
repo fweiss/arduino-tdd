@@ -24,15 +24,15 @@ void BlinkSignal::setOnPulseCount(uint8_t count) {
 
 void BlinkSignal::update(unsigned long millis) {
     if (millis >= nextMillis) {
-    	    if (countDown > 0) {
-    	    	    countDown--;
-    	    	    nextMillis = millis + highPulseWidth;
-    	    } else {
-    	    	    countDown = highPulseCount;
-		    nextMillis = millis + lowPulseWidth;
-    	    }
-    	    currentState = currentState == HIGH ? LOW : HIGH;
-    	    illuminate();
+        if (countDown > 0) {
+            countDown--;
+            nextMillis = millis + highPulseWidth;
+        } else {
+            countDown = highPulseCount;
+            nextMillis = millis + lowPulseWidth;
+        }
+        currentState = currentState == HIGH ? LOW : HIGH;
+        illuminate();
     }
 }
 
