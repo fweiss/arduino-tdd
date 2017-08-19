@@ -78,11 +78,13 @@ The URL is http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
 Select the eSP8266/esp8266/2.3.0 platform.
 
-### Adafruit Bluefruit M0
+### Adafruit Bluefruit M0 and 32u2
 
 The URL is https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
 
-The platform is Adafruit SAMD 1.0.19
+The platform for M0 is Adafruit SAMD 1.0.19
+
+The platform for 32u4 isAdafruit AVR Boards 1.4.9
 
 ## Debugging unit tests
 
