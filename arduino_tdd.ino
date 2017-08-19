@@ -7,7 +7,7 @@
 BlinkSignal blinkSignal(PIN, DELAY);
 
 void setup() {
-	blinkSignal.setHighPulseCount(2);
+	blinkSignal.setOnPulseWidth(2);
 }
 
 void loop() {

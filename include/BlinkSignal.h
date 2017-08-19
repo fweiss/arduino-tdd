@@ -13,10 +13,10 @@ private:
 public:
 	BlinkSignal(char pin, unsigned long pulsWidth);
 	void update(unsigned long millis);
-	void setLowPulseWidth(unsigned long pulseWidth) {
+	void setOffPulseWidth(unsigned long pulseWidth) {
 		this->lowPulseWidth = pulseWidth;
 	}
-	void setHighPulseCount(char count) {
+	void setOnPulseWidth(char count) {
 		this->highPulseCount = count * 2 - 1;
 		this->highPulseWidth = 20;
 		this->countDown = this->highPulseCount;

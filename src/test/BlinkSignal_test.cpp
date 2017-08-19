@@ -51,7 +51,7 @@ TEST(Square, Pulewidth) {
 	EXPECT_CALL(*arduinoMock, digitalWrite(1, LOW));
 
 	BlinkSignal blinkSignal(1, 2);
-	blinkSignal.setLowPulseWidth(2);
+	blinkSignal.setOffPulseWidth(2);
 	blinkSignal.update(0);
 	blinkSignal.update(1);
 	blinkSignal.update(2);
@@ -67,7 +67,7 @@ TEST(Square, Frequency) {
 		EXPECT_CALL(*arduinoMock, digitalWrite(1, HIGH));
 	}
 	BlinkSignal blinkSignal(1, 503);
-	blinkSignal.setLowPulseWidth(503);
+	blinkSignal.setOffPulseWidth(503);
 	blinkSignal.update(0);
 	blinkSignal.update(503);
 	blinkSignal.update(1006);
@@ -86,8 +86,8 @@ TEST(PulseTrain, Two) {
 		EXPECT_CALL(*arduinoMock, digitalWrite(1, LOW));
 	}
 	BlinkSignal blinkSignal(1, 60);
-	blinkSignal.setLowPulseWidth(60);
-	blinkSignal.setHighPulseCount(2);
+	blinkSignal.setOffPulseWidth(60);
+	blinkSignal.setOnPulseWidth(2);
 
 	blinkSignal.update(0);
 	blinkSignal.update(20);
