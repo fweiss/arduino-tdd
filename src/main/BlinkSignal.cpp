@@ -19,6 +19,11 @@ void BlinkSignal::update(unsigned long millis) {
 			nextMillis = millis + lowPulseWidth;
 		}
 		currentState = currentState == HIGH ? LOW : HIGH;
-		digitalWrite(pin, currentState);
+		illuminate();
 	}
+}
+
+void BlinkSignal::illuminate() {
+	// invert, since LED cathode is connected to GPIO pin
+	digitalWrite(pin, currentState);
 }

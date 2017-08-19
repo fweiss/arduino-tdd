@@ -10,6 +10,7 @@ private:
 
 	char countDown = 1;
 	unsigned long highPulseWidth;
+	void illuminate();
 public:
 	BlinkSignal(char pin, unsigned long pulsWidth);
 	void update(unsigned long millis);
