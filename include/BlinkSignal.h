@@ -19,7 +19,7 @@ public:
 	}
 	void setOnPulseWidth(char count) {
 		this->highPulseCount = count * 2 - 1;
-		this->highPulseWidth = 20;
+		this->highPulseWidth = lowPulseWidth / highPulseCount ;
 		this->countDown = this->highPulseCount;
 	}
 };

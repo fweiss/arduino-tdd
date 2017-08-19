@@ -98,3 +98,21 @@ TEST(PulseTrain, Two) {
 
 	releaseArduinoMock();
 }
+
+TEST(PulseTrain, TwoWide) {
+	ArduinoMock* arduinoMock = arduinoMockInstance();
+	{
+		InSequence s1;
+		EXPECT_CALL(*arduinoMock, digitalWrite(1, HIGH));
+		EXPECT_CALL(*arduinoMock, digitalWrite(1, LOW));
+	}
+	BlinkSignal blinkSignal(1, 500);
+	blinkSignal.setOffPulseWidth(500);
+	blinkSignal.setOnPulseWidth(2);
+
+	blinkSignal.update(0);
+	blinkSignal.update(166);
+
+	releaseArduinoMock();
+}
+

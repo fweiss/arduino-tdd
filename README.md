@@ -70,11 +70,19 @@ To add an addtional platform/board:
 
 Wait for the download to complete. Download status is shown in the lower right corner of the Eclipse window.
 
+Adafruit provide a lengthy catalog of Arduino platform URLs: https://github.com/arduino/Arduino/wiki/Unofficial-list-of-3rd-party-boards-support-urls#list-of-3rd-party-boards-support-urls
+
 ### Sparkfun ESP8266 Thing Dev
 
 The URL is http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
 Select the eSP8266/esp8266/2.3.0 platform.
+
+### Adafruit Bluefruit M0
+
+The URL is https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
+
+The platform is Adafruit SAMD 1.0.19
 
 ## Debugging
 
