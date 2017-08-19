@@ -1,13 +1,14 @@
 #include "Arduino.h"
 #include "BlinkSignal.h"
 
-#define PIN 13
-#define DELAY 1000
+#define PIN 5
+#define DELAY 1500
 
 BlinkSignal blinkSignal(PIN, DELAY);
 
 void setup() {
-	blinkSignal.setOnPulseWidth(3);
+	blinkSignal.invertOutput(true);
+	blinkSignal.setOnPulseWidth(5);
 }
 
 void loop() {

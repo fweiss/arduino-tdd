@@ -22,6 +22,17 @@ TEST(Basic, PinMode) {
 	releaseArduinoMock();
 }
 
+TEST(Basic, Invert) {
+	ArduinoMock* arduinoMock = arduinoMockInstance();
+	EXPECT_CALL(*arduinoMock, digitalWrite(1, LOW));
+
+	BlinkSignal bs(1, 1);
+	bs.invertOutput(true);
+	bs.update(0);
+	releaseArduinoMock();
+
+}
+
 TEST(Basic, PinNumberWrite) {
 	ArduinoMock* arduinoMock = arduinoMockInstance();
 	EXPECT_CALL(*arduinoMock, digitalWrite(3, HIGH));

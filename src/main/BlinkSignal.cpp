@@ -9,6 +9,10 @@ BlinkSignal::BlinkSignal(char pin, unsigned long pulseWidth) {
 	pinMode(pin, OUTPUT);
 }
 
+void BlinkSignal::invertOutput(bool invert) {
+	this->invert = invert;
+}
+
 void BlinkSignal::update(unsigned long millis) {
 	if (millis >= nextMillis) {
 		if (countDown > 0) {
@@ -25,5 +29,6 @@ void BlinkSignal::update(unsigned long millis) {
 
 void BlinkSignal::illuminate() {
 	// invert, since LED cathode is connected to GPIO pin
-	digitalWrite(pin, currentState);
+	uint8_t value = invert ? (currentState == HIGH ? LOW : HIGH): currentState;
+	digitalWrite(pin, value);
 }
