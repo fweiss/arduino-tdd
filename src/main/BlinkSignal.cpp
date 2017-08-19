@@ -23,20 +23,20 @@ void BlinkSignal::setOnPulseCount(uint8_t count) {
 
 void BlinkSignal::update(unsigned long millis) {
     if (millis >= nextMillis) {
-    		if (countDown > 0) {
-			countDown--;
-			nextMillis = millis + highPulseWidth;
-    		} else {
-			countDown = highPulseCount;
-			nextMillis = millis + lowPulseWidth;
-    		}
-    		currentState = currentState == HIGH ? LOW : HIGH;
-    		illuminate();
+    	    if (countDown > 0) {
+    	    	    countDown--;
+    	    	    nextMillis = millis + highPulseWidth;
+    	    } else {
+    	    	    countDown = highPulseCount;
+		    nextMillis = millis + lowPulseWidth;
+    	    }
+    	    currentState = currentState == HIGH ? LOW : HIGH;
+    	    illuminate();
     }
 }
 
 void BlinkSignal::illuminate() {
     // invert, since LED cathode is connected to GPIO pin
-	uint8_t value = invert ? (currentState == HIGH ? LOW : HIGH): currentState;
-	digitalWrite(pin, value);
+    uint8_t value = invert ? (currentState == HIGH ? LOW : HIGH): currentState;
+    digitalWrite(pin, value);
 }
