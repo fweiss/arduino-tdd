@@ -8,7 +8,7 @@ BlinkSignal blinkSignal(PIN, DELAY);
 
 void setup() {
 	blinkSignal.invertOutput(true);
-	blinkSignal.setOnPulseWidth(5);
+	blinkSignal.setOnPulseCount(5);
 }
 
 void loop() {

@@ -98,7 +98,7 @@ TEST(PulseTrain, Two) {
 	}
 	BlinkSignal blinkSignal(1, 60);
 	blinkSignal.setOffPulseWidth(60);
-	blinkSignal.setOnPulseWidth(2);
+	blinkSignal.setOnPulseCount(2);
 
 	blinkSignal.update(0);
 	blinkSignal.update(20);
@@ -119,7 +119,7 @@ TEST(PulseTrain, TwoWide) {
 	}
 	BlinkSignal blinkSignal(1, 500);
 	blinkSignal.setOffPulseWidth(500);
-	blinkSignal.setOnPulseWidth(2);
+	blinkSignal.setOnPulseCount(2);
 
 	blinkSignal.update(0);
 	blinkSignal.update(166);

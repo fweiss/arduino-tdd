@@ -84,9 +84,16 @@ The URL is https://adafruit.github.io/arduino-board-index/package_adafruit_index
 
 The platform is Adafruit SAMD 1.0.19
 
-## Debugging
+## Debugging unit tests
+
+One of the joys of unit testing is being able to set through the code under controlled circumstances. 
+You will need to have a C++ debugger available for CDT and configure the compiler to provide debug information in the executable.
 
 https://www.ics.uci.edu/~pattis/common/handouts/macmingweclipse/allexperimental/mac-gdb-install.html
 
-Eclipse Oxygen has experimental integration with lldb.
+The CDT debugger won't work well unless you tell the compiler to include debug information.
+Open the project properties. Navigate to C/C++ Settings. Then select you test configuration (gtest).
+Navigate to GCC C++ Compiler > Dubugging. For the Debugging level, select default (-g).
+
+Eclipse Oxygen has experimental integration with LLDB, which may be handy if you are using an LLVM compiler, such as Mac OS X.
 
