@@ -5,7 +5,7 @@ A starter project to demo a toolchain for developing Arduino applications using 
 Test Driven Development (TDD) is a coding practice whereby automated tests are executed before working code is written.
 A defining mantra of TDD is **RED, GREEN, REFACTOR**.
 There are many benefits of this approach, although some software engineers feel that it gets in the way.
-Once you master the basics, which are faciliated my many frameworks such as JUnit and RSpec, you'll find that the
+Once you master the basics, which are faciliated by many frameworks such as JUnit and RSpec, you'll find that the
 resulting code **sum tests** are way better to maintain and extend.
 
 ## Motivation
