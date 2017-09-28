@@ -1,6 +1,18 @@
 # arduino-tdd
 A starter project to demo a toolchain for developing Arduino applications using TDD
 
+## What is TDD
+Test Driven Development (TDD) is a coding practice whereby automated tests are executed before working code is written.
+A defining mantra of TDD is **RED, GREEN, REFACTOR**.
+There are many benefits of this approach, although some software engineers feel that it gets in the way.
+Once you master the basics, which are faciliated my many frameworks such as JUnit and RSpec, you'll find that the
+resulting code **sum tests** are way better to maintain and extend.
+
+## Motivation
+I have developed several Arduino projects without TDD. I have always felt that before trying to manually verify the outputs
+of the actuators manually, the code should have be tested. And furthermore, I believe code that's written test-first is better code.
+I have finally sat down to accomplish this. I hope this inspires other embedded enginers to practice TDD.
+
 ## Target toolchain
 After looking into many options, this toolchain was chosen:
 - Eclipse Oxygen 4.7
