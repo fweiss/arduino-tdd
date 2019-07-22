@@ -1,4 +1,3 @@
-/Release
-/core
+build
+local.mk
 
-/gtest/
