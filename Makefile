@@ -5,9 +5,11 @@ SRCDIR = src/main
 TESTDIR = src/test
 OBJDIR = build
 
+# LDFLAGS, LDLIBS
+
 include local.mk
 
-OBJS = $(OBJDIR)/BlinkSignal_test.o $(OBJDIR)/BlinkSignal.o lib/libarduino_mock.a
+OBJS = $(OBJDIR)/BlinkSignal_test.o $(OBJDIR)/BlinkSignal.o $(OBJDIR)/libarduino-mock.a $(OBJDIR)/libgtest.a $(OBJDIR)/libgmock.a
 
 CPLUS_INCLUDE_PATH = $(GTEST_INC):$(GMOCK_INC):$(AMOCK_DIR)/include/arduino-mock:include
 
@@ -21,8 +23,8 @@ test: $(OBJDIR)/BlinkSignal_test
 	$(OBJDIR)/BlinkSignal_test --gtest_output="xml:XML_Report.xml"
 
 # link the tests
-$(OBJDIR)/BlinkSignal_test: $(OBJS)
-	$(CXX) -o $@ $^ $(GTEST_LIB) $(GMOCK_LIB)
+$(OBJDIR)/BlinkSignal_test: $(OBJS) $(OBJDIR)/gtest_main.o
+	$(CXX) -o $@ $^
 
 # compile the tests
 $(OBJDIR)/%.o: $(TESTDIR)/%.cpp
@@ -36,6 +38,9 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 $(OBJDIR)/gtest-all.o:
 	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(GTEST_HOME_DIR)/googletest/include -I$(GTEST_HOME_DIR)/googletest -c $(GTEST_HOME_DIR)/googletest/src/gtest-all.cc
 
+$(OBJDIR)/gtest_main.o:
+	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(GTEST_HOME_DIR)/googletest/include -I$(GTEST_HOME_DIR)/googletest -c $(GTEST_HOME_DIR)/googletest/src/gtest_main.cc
+
 $(OBJDIR)/libgtest.a: $(OBJDIR)/gtest-all.o
 	ar -rv $(OBJDIR)/libgtest.a $(OBJDIR)/gtest-all.o
 
@@ -44,4 +49,13 @@ $(OBJDIR)/gmock-all.o:
 
 $(OBJDIR)/libgmock.a: $(OBJDIR)/gmock-all.o
 	ar -rv $@ $<
+
+# create the arduido-mock library
+$(OBJDIR)/arduino-mock-all.o:
+	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(GTEST_HOME_DIR)/googletest/include -I$(GTEST_HOME_DIR)/googletest $(AMOCK_DIR)/src/ArduinoMockAll.cc
+
+$(OBJDIR)/libarduino-mock.a: $(OBJDIR)/arduino-mock-all.o
+	ar -rv $@ $<
+
+
 	
