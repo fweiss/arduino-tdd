@@ -42,7 +42,7 @@ $(OBJDIR)/gtest_main.o:
 	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(GTEST_HOME_DIR)/googletest/include -c $(GTEST_HOME_DIR)/googletest/src/gtest_main.cc
 
 $(OBJDIR)/libgtest.a: $(OBJDIR)/gtest-all.o
-	ar -rv $(OBJDIR)/libgtest.a $(OBJDIR)/gtest-all.o
+	ar -rv $@ $<
 
 $(OBJDIR)/gmock-all.o:
 	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(GTEST_HOME_DIR)/googlemock/include -I$(GTEST_HOME_DIR)/googlemock -c $(GTEST_HOME_DIR)/googlemock/src/gmock-all.cc
