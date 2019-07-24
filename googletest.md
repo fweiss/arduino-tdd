@@ -15,3 +15,7 @@ Note that the define resolves the old problems with gtest-port.h
 you can use the .o or create an archive:
 
 ``ar -rv libgmock.a gmock-all.o``
+
+in googlemock/include/gmock/gmock-matchers.h
+
+need to add a (bool) cast to true ca 3956
