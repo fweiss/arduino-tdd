@@ -56,7 +56,7 @@ TEST(BlinkSignal, Square) {
 	releaseArduinoMock();
 }
 
-TEST(Square, Pulewidth) {
+TEST(Square, Pulsewidth) {
 	ArduinoMock* arduinoMock = arduinoMockInstance();
 	EXPECT_CALL(*arduinoMock, digitalWrite(1, HIGH));
 	EXPECT_CALL(*arduinoMock, digitalWrite(1, LOW));
