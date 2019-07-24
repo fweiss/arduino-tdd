@@ -20,7 +20,7 @@ clean:
 
 # run the tests
 test: $(OBJDIR)/BlinkSignal_test
-	$(OBJDIR)/BlinkSignal_test --gtest_output="xml:XML_Report.xml"
+	$(OBJDIR)/BlinkSignal_test --gtest_output="xml:$(OBJDIR)/XML_Report.xml"
 
 # link the tests
 $(OBJDIR)/BlinkSignal_test: $(OBJS) $(OBJDIR)/gtest_main.o
