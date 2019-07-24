@@ -39,20 +39,20 @@ $(OBJDIR)/gtest-all.o:
 	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(GTEST_HOME_DIR)/googletest/include -I$(GTEST_HOME_DIR)/googletest -c $(GTEST_HOME_DIR)/googletest/src/gtest-all.cc
 
 $(OBJDIR)/gtest_main.o:
-	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(GTEST_HOME_DIR)/googletest/include -I$(GTEST_HOME_DIR)/googletest -c $(GTEST_HOME_DIR)/googletest/src/gtest_main.cc
+	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(GTEST_HOME_DIR)/googletest/include -c $(GTEST_HOME_DIR)/googletest/src/gtest_main.cc
 
 $(OBJDIR)/libgtest.a: $(OBJDIR)/gtest-all.o
 	ar -rv $(OBJDIR)/libgtest.a $(OBJDIR)/gtest-all.o
 
 $(OBJDIR)/gmock-all.o:
-	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(GTEST_HOME_DIR)/googlemock/include -I$(GTEST_HOME_DIR)/googlemock -I$(GTEST_HOME_DIR)/googletest/include -I$(GTEST_HOME_DIR)/googletest -c $(GTEST_HOME_DIR)/googlemock/src/gmock-all.cc
+	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(GTEST_HOME_DIR)/googlemock/include -I$(GTEST_HOME_DIR)/googlemock -c $(GTEST_HOME_DIR)/googlemock/src/gmock-all.cc
 
 $(OBJDIR)/libgmock.a: $(OBJDIR)/gmock-all.o
 	ar -rv $@ $<
 
 # create the arduido-mock library
 $(OBJDIR)/arduino-mock-all.o:
-	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(GTEST_HOME_DIR)/googletest/include -I$(GTEST_HOME_DIR)/googletest $(AMOCK_DIR)/src/ArduinoMockAll.cc
+	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(GTEST_HOME_DIR)/googletest/include $(AMOCK_DIR)/src/ArduinoMockAll.cc
 
 $(OBJDIR)/libarduino-mock.a: $(OBJDIR)/arduino-mock-all.o
 	ar -rv $@ $<
