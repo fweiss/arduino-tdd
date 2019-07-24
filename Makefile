@@ -11,7 +11,7 @@ include local.mk
 
 OBJS = $(OBJDIR)/BlinkSignal_test.o $(OBJDIR)/BlinkSignal.o $(OBJDIR)/libarduino-mock.a $(OBJDIR)/libgtest.a $(OBJDIR)/libgmock.a
 
-CPLUS_INCLUDE_PATH = $(GTEST_INC):$(GMOCK_INC):$(AMOCK_DIR)/include/arduino-mock:include
+CPLUS_INCLUDE_PATH = $(GTEST_HOME_DIR)/googletest/include:$(GTEST_HOME_DIR)/googlemock/include:$(AMOCK_DIR)/include/arduino-mock:include
 
 CXXFLAGS += -std=c++11 -stdlib=libc++ -DGTEST_USE_OWN_TR1_TUPLE=1
 
