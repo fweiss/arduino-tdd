@@ -9,6 +9,13 @@ OBJDIR = build
 
 include local.mk
 
+ifndef GTEST_HOME_DIR
+$(error GTEST_HOME_DIR is not set in local.mk)
+endif
+ifndef AMOCK_DIR
+$(error AMOCK_DIR is not set in local.mk)
+endif
+
 OBJS = $(OBJDIR)/BlinkSignal_test.o $(OBJDIR)/BlinkSignal.o $(OBJDIR)/libarduino-mock.a $(OBJDIR)/libgtest.a $(OBJDIR)/libgmock.a
 
 CPLUS_INCLUDE_PATH = -I$(GTEST_HOME_DIR)/googletest/include -I$(GTEST_HOME_DIR)/googlemock -I$(GTEST_HOME_DIR)/googlemock/include -I$(AMOCK_DIR)/include/arduino-mock -Iinclude
