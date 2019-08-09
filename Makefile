@@ -11,7 +11,7 @@ include local.mk
 
 OBJS = $(OBJDIR)/BlinkSignal_test.o $(OBJDIR)/BlinkSignal.o $(OBJDIR)/libarduino-mock.a $(OBJDIR)/libgtest.a $(OBJDIR)/libgmock.a
 
-CPLUS_INCLUDE_PATH = $(GTEST_HOME_DIR)/googletest/include:$(GTEST_HOME_DIR)/googlemock/include:$(AMOCK_DIR)/include/arduino-mock:include
+CPLUS_INCLUDE_PATH = -I$(GTEST_HOME_DIR)/googletest/include -I$(GTEST_HOME_DIR)/googlemock -I$(GTEST_HOME_DIR)/googlemock/include -I$(AMOCK_DIR)/include/arduino-mock -Iinclude
 
 CXXFLAGS += -std=c++11 -stdlib=libc++ -DGTEST_USE_OWN_TR1_TUPLE=1
 
@@ -28,11 +28,11 @@ $(OBJDIR)/BlinkSignal_test: $(OBJS) $(OBJDIR)/gtest_main.o
 
 # compile the tests
 $(OBJDIR)/%.o: $(TESTDIR)/%.cpp
-	$(CXX) -c $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(CPLUS_INCLUDE_PATH) -o $@ $<
+	$(CXX) -c $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(CPLUS_INCLUDE_PATH) -o $@ $<
 
 # compile the source
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
-	$(CXX) -c $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(CPLUS_INCLUDE_PATH) -o $@ $<
+	$(CXX) -c $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(CPLUS_INCLUDE_PATH) -o $@ $<
 
 # create the gtest and gmock libraries
 $(OBJDIR)/gtest-all.o:
@@ -45,14 +45,14 @@ $(OBJDIR)/libgtest.a: $(OBJDIR)/gtest-all.o
 	ar -rv $@ $<
 
 $(OBJDIR)/gmock-all.o:
-	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(GTEST_HOME_DIR)/googlemock/include -I$(GTEST_HOME_DIR)/googlemock -c $(GTEST_HOME_DIR)/googlemock/src/gmock-all.cc
+	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(CPLUS_INCLUDE_PATH) -c $(GTEST_HOME_DIR)/googlemock/src/gmock-all.cc
 
 $(OBJDIR)/libgmock.a: $(OBJDIR)/gmock-all.o
 	ar -rv $@ $<
 
-# create the arduido-mock library
+# create the arduino-mock library
 $(OBJDIR)/arduino-mock-all.o:
-	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(GTEST_HOME_DIR)/googletest/include $(AMOCK_DIR)/src/ArduinoMockAll.cc
+	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(CPLUS_INCLUDE_PATH) $(AMOCK_DIR)/src/ArduinoMockAll.cc
 
 $(OBJDIR)/libarduino-mock.a: $(OBJDIR)/arduino-mock-all.o
 	ar -rv $@ $<
