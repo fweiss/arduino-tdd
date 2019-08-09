@@ -2,8 +2,8 @@
 
 BlinkSignal::BlinkSignal(uint8_t pin, unsigned long pulseWidth) {
     this->pin = pin;
-    this->lowPulseWidth = pulseWidth;
-    this->highPulseWidth = pulseWidth;
+    this->offPulseWidth = pulseWidth;
+    this->onPulseWidth = pulseWidth;
     pinMode(pin, OUTPUT);
 }
 
@@ -12,12 +12,12 @@ void BlinkSignal::invertOutput(bool invert) {
 }
 
 void BlinkSignal::setOffPulseWidth(unsigned long pulseWidth) {
-    this->lowPulseWidth = pulseWidth;
+    this->offPulseWidth = pulseWidth;
 }
 
 void BlinkSignal::setOnPulseCount(uint8_t count) {
     this->highPulseCount = count * 2 - 1;
-    this->highPulseWidth = lowPulseWidth / highPulseCount ;
+    this->onPulseWidth = offPulseWidth / highPulseCount ;
     this->countDown = this->highPulseCount;
 }
 
@@ -26,10 +26,10 @@ void BlinkSignal::update(unsigned long millis) {
     if (millis >= nextMillis) {
         if (countDown > 0) {
             countDown--;
-            nextMillis = millis + highPulseWidth;
+            nextMillis = millis + onPulseWidth;
         } else {
             countDown = highPulseCount;
-            nextMillis = millis + lowPulseWidth;
+            nextMillis = millis + offPulseWidth;
         }
         currentState = currentState == HIGH ? LOW : HIGH;
         illuminate();
