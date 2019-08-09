@@ -8,13 +8,14 @@ OBJDIR = build
 # LDFLAGS, LDLIBS
 
 include local.mk
-
 ifndef GTEST_HOME_DIR
 $(error GTEST_HOME_DIR is not set in local.mk)
 endif
 ifndef AMOCK_DIR
 $(error AMOCK_DIR is not set in local.mk)
 endif
+
+include gtest.mk
 
 OBJS = $(OBJDIR)/BlinkSignal_test.o $(OBJDIR)/BlinkSignal.o $(OBJDIR)/libarduino-mock.a $(OBJDIR)/libgtest.a $(OBJDIR)/libgmock.a
 
@@ -40,22 +41,6 @@ $(OBJDIR)/%.o: $(TESTDIR)/%.cpp
 # compile the source
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	$(CXX) -c $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(CPLUS_INCLUDE_PATH) -o $@ $<
-
-# create the gtest and gmock libraries
-$(OBJDIR)/gtest-all.o:
-	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(GTEST_HOME_DIR)/googletest/include -I$(GTEST_HOME_DIR)/googletest -c $(GTEST_HOME_DIR)/googletest/src/gtest-all.cc
-
-$(OBJDIR)/gtest_main.o:
-	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -I$(GTEST_HOME_DIR)/googletest/include -c $(GTEST_HOME_DIR)/googletest/src/gtest_main.cc
-
-$(OBJDIR)/libgtest.a: $(OBJDIR)/gtest-all.o
-	ar -rv $@ $<
-
-$(OBJDIR)/gmock-all.o:
-	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(CPLUS_INCLUDE_PATH) -c $(GTEST_HOME_DIR)/googlemock/src/gmock-all.cc
-
-$(OBJDIR)/libgmock.a: $(OBJDIR)/gmock-all.o
-	ar -rv $@ $<
 
 # create the arduino-mock library
 $(OBJDIR)/arduino-mock-all.o:
