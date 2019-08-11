@@ -21,7 +21,8 @@ OBJS = $(OBJDIR)/BlinkSignal_test.o $(OBJDIR)/BlinkSignal.o $(OBJDIR)/libarduino
 
 CPLUS_INCLUDE_PATH = -I$(GTEST_HOME_DIR)/googletest/include -I$(GTEST_HOME_DIR)/googlemock -I$(GTEST_HOME_DIR)/googlemock/include -I$(AMOCK_DIR)/include/arduino-mock -Iinclude
 
-CXXFLAGS += -std=c++11 -stdlib=libc++ -DGTEST_USE_OWN_TR1_TUPLE=1
+# -stdlib=libc++ on clang?
+CXXFLAGS += -std=c++11 -DGTEST_USE_OWN_TR1_TUPLE=1
 
 clean:
 	rm -rf $(OBJDIR)/*

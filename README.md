@@ -66,6 +66,31 @@ In gtest configuration, set language version to C++11. This permits using more m
 ### Setting up run configurations
 For the Release environment, add the include directory, but that directory ought to be split between test and release.
 
+## Host system support
+Most of the development ws done on Mac OS
+
+Windows using msys32. You could also use ming, but that includes more than is need ed just to compile and run. Visual Studio would be another option.
+
+## Googletest notes
+There was a bug with google test
+
+``googletest/googlemock/include/gmock/gmock-matchers.h:3956:50: error: call of overloaded 'FloatingEq2Matcher(int)' is ambiguous``
+
+Patch gmock-matchers.h. Add a cast ``(bool)true`` in two places.
+
+## Arduino-mock notes
+There is a warning
+
+```Uninteresting mock function call - returning directly.
+    Function call: pinMode('\x1' (1), '\x1' (1))
+```
+
+https://github.com/google/googletest/blob/master/googlemock/docs/cook_book.md#NiceStrictNaggy
+
+Patch Arduin.cc
+
+``arduinoMock = new testing::NiceMock<ArduinoMock>();``
+
 ## Target platforms
 The following IoT platforms were used to validate this project:
 - Sparkfun ESP8266 Thing Dev (a spare device I had which also had built-in FTDI)
